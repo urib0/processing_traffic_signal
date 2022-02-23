@@ -1,44 +1,43 @@
-int eSize = 50;
-int x = 0;
-boolean flg_r = false;
-int f = 30;
-int cnt = 0;
+int c_frame_rate = 30;
+int interval_cnt = 0;
 int state = 0;
-int h_sig_car = 100;
+int c_sig_car_h = 100;
+int c_sig_car_size = 50;
 
-void show_g()
+
+void show_sig_car_g()
 {
   fill(0,255,0);
-  ellipse(width/4, h_sig_car, eSize, eSize);
+  ellipse(width/4, c_sig_car_h, c_sig_car_size, c_sig_car_size);
   fill(200,200,200);
-  ellipse(2*width/4, h_sig_car, eSize, eSize);
+  ellipse(2*width/4, c_sig_car_h, c_sig_car_size, c_sig_car_size);
   fill(200,200,200);
-  ellipse(3*width/4, h_sig_car, eSize, eSize);
+  ellipse(3*width/4, c_sig_car_h, c_sig_car_size, c_sig_car_size);
 }
-void show_y()
+void show_sig_car_y()
 {
   fill(200,200,200);
-  ellipse(width/4, h_sig_car, eSize, eSize);
+  ellipse(width/4, c_sig_car_h, c_sig_car_size, c_sig_car_size);
   fill(255,255,100);
-  ellipse(2*width/4, h_sig_car, eSize, eSize);
+  ellipse(2*width/4, c_sig_car_h, c_sig_car_size, c_sig_car_size);
   fill(200,200,200);
-  ellipse(3*width/4, h_sig_car, eSize, eSize);
+  ellipse(3*width/4, c_sig_car_h, c_sig_car_size, c_sig_car_size);
 }
-void show_r()
+void show_sig_car_r()
 {
   fill(200,200,200);
-  ellipse(width/4, h_sig_car, eSize, eSize);
+  ellipse(width/4, c_sig_car_h, c_sig_car_size, c_sig_car_size);
   fill(200,200,200);
-  ellipse(2*width/4, h_sig_car, eSize, eSize);
+  ellipse(2*width/4, c_sig_car_h, c_sig_car_size, c_sig_car_size);
   fill(255,0,0);
-  ellipse(3*width/4, h_sig_car, eSize, eSize);
+  ellipse(3*width/4, c_sig_car_h, c_sig_car_size, c_sig_car_size);
 }
 
 void setup() {
   size(400, 400);
   noStroke();
-  frameRate(f);
-//  smooth();
+  frameRate(c_frame_rate);
+  smooth();
 }
  
 void draw() {
@@ -47,27 +46,26 @@ void draw() {
   {
     case 0:
     {
-      show_g();
+      show_sig_car_g();
       break;
     }
     case 1:
     {
-      show_y();
+      show_sig_car_y();
       break;
     }
     case 2:
     {
-      show_r();
+      show_sig_car_r();
       break;
     }
   }
-
   
   // 1sec counter
-  cnt++;
-  if(cnt>f)
+  interval_cnt++;
+  if(interval_cnt>c_frame_rate)
   {
-    cnt=0;
+    interval_cnt=0;
     // state
     state++;
     if(state>2)state=0;
